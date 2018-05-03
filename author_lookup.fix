@@ -1,6 +1,5 @@
 # only if contributor exists
 if exists(dc_contributor)
-    
     # iterate over all contributor values
     # varibale 'current' is the current contributor
     do list(path:dc_contributor, var:current)
@@ -14,15 +13,14 @@ if exists(dc_contributor)
 
         # let Catmandu make the Triple Pattern Fragments request
         # on success varibale lookup will be overwritten
-        rdf_ldf_statements(lookup,url:"http://127.0.0.1:3000/perl_authors",predicate:"http://d-nb.info/standards/elementset/gnd#preferredNameForThePerson")
+        rdf_ldf_statements(lookup,url:"http://localhost:3000/perl_authors",predicate:"http://d-nb.info/standards/elementset/gnd#preferredNameForThePerson")
         
         # on success lookup should be a list
         if exists(lookup.0)
             
             # append first list element to a new dct_contributor field
             # pretty sure the first list element is the right one ;-)
-            #copy_field(lookup.0,dct_contributor.$append)
-            copy_field(lookup.0,current)
+            copy_field(lookup.0,dct_contributor.$append)
         end
     end
 end

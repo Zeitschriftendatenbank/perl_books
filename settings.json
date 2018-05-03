@@ -1,0 +1,60 @@
+{
+  "datasources": [
+    {
+      "name": "perl_books",
+      "url": "http://localhost:3000/perl_books"
+    },
+    {
+      "name": "DBpedia 2015-10",
+      "url": "http://fragments.dbpedia.org/2015-10/en"
+    },
+    {
+      "name": "DBpedia 2015-04",
+      "url": "http://fragments.dbpedia.org/2015/en"
+    },
+    {
+      "name": "DBpedia 2014",
+      "url": "http://fragments.dbpedia.org/2014/en"
+    },
+    {
+      "name": "Ghent University Academic Bibliography",
+      "url": "http://data.linkeddatafragments.org/ugent-biblio"
+    },
+    {
+      "name": "Linked Open Vocabularies",
+      "url": "http://data.linkeddatafragments.org/lov"
+    },
+    {
+      "name": "Virtual International Authority File (VIAF)",
+      "url": "http://data.linkeddatafragments.org/viaf"
+    },
+    {
+      "name": "Harvard Library",
+      "url": "http://data.linkeddatafragments.org/harvard"
+    },
+    {
+      "name": "Wikidata",
+      "url": "https://query.wikidata.org/bigdata/ldf"
+    }
+  ],
+  "prefixes": {
+    "rdf":         "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":        "http://www.w3.org/2000/01/rdf-schema#",
+    "owl":         "http://www.w3.org/2002/07/owl#",
+    "skos":        "http://www.w3.org/2004/02/skos/core#",
+    "xsd":         "http://www.w3.org/2001/XMLSchema#",
+    "dc":          "http://purl.org/dc/elements/1.1/",
+    "dct":         "http://purl.org/dc/terms/",
+    "foaf":        "http://xmlns.com/foaf/0.1/",
+    "dbpedia":     "http://dbpedia.org/resource/",
+    "dbpedia-owl": "http://dbpedia.org/ontology/",
+    "dbpprop":     "http://dbpedia.org/property/",
+    "schema":      "http://schema.org/",
+    "wd":          "http://www.wikidata.org/entity/",
+    "wdt":         "http://www.wikidata.org/prop/direct/",
+    "gndo":        "http://d-nb.info/standards/elementset/gnd#",
+    "gnd":         "http://d-nb.info/gnd/",
+    "viaf":        "http://viaf.org/viaf/"
+  },
+  "queries": "(Will be generated from the 'queries' folder by running the './queries-to-json' script.)"
+}

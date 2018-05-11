@@ -53,7 +53,7 @@ Add your `perl_books.hdt` Linked Data Framents source to the clients `settings.j
 
 Make sure that the LDF server with the `perl_authors` and `perl_books` datasources from Exercise 3 is still running.
 
-Start a new Linked Data Fragments client with your settings:
+Start a new Linked Data Fragments client with your settings (within directory `/home/catmandu/LinkedDataFragments/client`) :
 
 ```terminal
 $ npm start
@@ -65,18 +65,18 @@ Choose `Perl Books` only as datasouce. And make a SPARQL request for remaining c
 
 ```
 SELECT * WHERE {
-    ?book dc:contributor ?name .
+    ?book dct:contributor ?gnd .
 }
 ```
 
-Add 'Virtual International Authority File (VIAF)' to the datasouces and query for VIAF-URIs with your first federated Linked Data Framents query:
+Add `Virtual International Authority File (VIAF)` to the datasouces and query for VIAF-URIs with your first federated Linked Data Framents query:
 
 ```
 SELECT * WHERE {
-      ?book dc:contributor ?name .
+      ?book dct:contributor ?gnd .
 
-      # this connects contributor names from perl_books with VIAF IDs
-      ?viaf schema:name ?name .
+      # this connects contributor IDs from perl_books with VIAF IDs
+      ?viaf schema:sameAs ?gnd .
 }
 ```
 
@@ -85,9 +85,9 @@ Expand this query with URIs from VIAFs sameAs links:
 ```
 SELECT * WHERE {
     
-    ?book dc:contributor ?name .
-
-    ?viaf schema:name ?name .
+    ?book dct:contributor ?gnd .
+    
+    ?viaf schema:sameAs ?gnd .
   
     # get the sameAs links
     ?viaf schema:sameAs ?uri .
@@ -104,9 +104,12 @@ CONSTRUCT {
 }
 WHERE {
     ?book dct:contributor ?gnd .
-    ?book ?p ?o .
-    ?viaf schema:name ?gnd .
-    ?viaf schema:sameAs ?uri .
+    {
+        ?book ?p ?o .
+    } UNION {
+        ?viaf schema:sameAs ?gnd .
+        ?viaf schema:sameAs ?uri .
+  }
 }
 ```
 
@@ -122,9 +125,12 @@ CONSTRUCT {
 }
 WHERE {
     ?book dct:contributor ?gnd .
-    ?book ?p ?o .
-    ?viaf schema:name ?gnd .
-    ?viaf schema:sameAs ?uri .
+    {
+        ?book ?p ?o .
+    } UNION {
+        ?viaf schema:sameAs ?gnd .
+        ?viaf schema:sameAs ?uri .
+  }
 }
 ```
 

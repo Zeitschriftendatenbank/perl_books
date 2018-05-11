@@ -36,7 +36,6 @@ if exists(dc_contributor)
             # copy first list element to the current list element
             # pretty sure the first list element is the right one ;-)
             copy_field(lookup.0,dct_contributor.$append)
-            copy_field(lookup.0,current)
         end
     end
 end
@@ -53,7 +52,7 @@ Rerun the RDF conversion with the author lookup and store the result in a file:
 $ catmandu convert MARC to RDF --fix marc2dc.fix --fix author_lookup.fix --type Turtle < perl_books.mrc > perl_books.ttl
 ```
 
-Check if the lookup was successful:
+Check if the lookup was successful (enriched by URIs of the German Authority File GND):
 
 ```terminal
 $  grep 'http://d-nb.info/gnd/138937079' perl_books.ttl
@@ -142,7 +141,7 @@ Create a file named `books.sparql` with the following content:
 
 ```sparql
 select * where {
-    ?record dc:contributor <http://d-nb.info/gnd/138937079>
+    ?record <http://purl.org/dc/elements/1.1/contributor> <http://d-nb.info/gnd/138937079>
 } 
 ```
 
